@@ -40,7 +40,7 @@ Wireshark is the tool organisations use to do that. It captures the raw data mov
 
 ## Architecture — how Wireshark captures traffic
 
-![Lab 2 architecture diagram](./lab2-wireshark-architecture.svg)
+![Lab 2 architecture diagram](file:///C:/Users/demar/Downloads/lab2-wireshark-architecture.svg)
 
 Your browser and terminal generate traffic the normal way — an HTTP request, an `nslookup` query — and that traffic passes through your network interface card on its way out to the router and onward across the internet to a DNS server or web server. Wireshark doesn't sit *in* that path. It puts the NIC into **promiscuous mode**, which hands Wireshark a mirrored copy of every frame crossing that interface, while the original traffic continues on its way unaffected. That's why you can capture and inspect traffic without disrupting the connection it belongs to — Wireshark is observing, not intercepting.
 
