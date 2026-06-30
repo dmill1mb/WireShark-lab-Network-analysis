@@ -304,3 +304,6 @@ And the HTTP exercise would translate into an actual policy position: no applica
 This lab is the other half of what I started with the Active Directory lab. AD answers "who is allowed to do what." Wireshark answers "what is actually happening on the wire right now." A sysadmin gets paged with "the app is slow" or "I can't reach the server" far more often than with a clean, well-described bug report, and the difference between guessing and diagnosing is being able to open a capture and show, with packets, whether the problem is DNS resolution failing, a TCP handshake never completing, or the application itself responding slowly after a perfectly healthy connection. That's not a theoretical skill — it's the difference between telling a user "try restarting your computer" and telling them exactly what's broken and why.
 
 It also gives me a concrete, defensible answer to an interview question I used to dread: "how would you troubleshoot a connectivity issue?" Now I can walk through it — check the handshake, check DNS, check whether traffic is even reaching the interface — instead of describing it in the abstract.
+## 📬 Contact
+
+**Demarcus Miller** —  · [www.linkedin.com/in/demarcus-miller-96502b1a7] · [MillerSDemarcus@gmail.com]
