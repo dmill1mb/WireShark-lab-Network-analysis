@@ -40,7 +40,39 @@ Wireshark is the tool organisations use to do that. It captures the raw data mov
 
 ## Architecture — how Wireshark captures traffic
 
-![Lab 2 architecture diagram](file:///C:/Users/demar/Downloads/lab2-wireshark-architecture.svg)
+```
+ [ DNS Server ]           [ Web Server ] 
+resolves domain            example.com   
+ name to an IP           served over HTTP
+       │                         │       
+       └────────────┬────────────┘       
+                    │
+                    ▼
+              [ INTERNET ]
+           [ Router / Switch ]
+          local network segment
+                    │
+                    ▼
+┌───────────────────────────────────────────┐
+│ LOCAL MACHINE                             │
+│                                           │
+│        [ NIC — promiscuous mode ]         │
+│                     │                     │
+│            ┌────────┴────────┐            │
+│            │                 │            │
+│            ▼                 ▼            │
+│      [ Browser ]       [ Terminal ]       │
+│      HTTP request        nslookup         │
+│       to a site           query           │
+│                     │                     │
+│ (NIC hands a mirrored copy of every frame │
+│  to Wireshark, untouched)                 │
+│                     │                     │
+│                     ▼                     │
+│               [ WIRESHARK ]               │
+│      captures a copy of every frame       │
+└───────────────────────────────────────────┘
+```
 
 Your browser and terminal generate traffic the normal way — an HTTP request, an `nslookup` query — and that traffic passes through your network interface card on its way out to the router and onward across the internet to a DNS server or web server. Wireshark doesn't sit *in* that path. It puts the NIC into **promiscuous mode**, which hands Wireshark a mirrored copy of every frame crossing that interface, while the original traffic continues on its way unaffected. That's why you can capture and inspect traffic without disrupting the connection it belongs to — Wireshark is observing, not intercepting.
 
